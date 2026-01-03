@@ -1,26 +1,11 @@
 /* Group settings compatibility styling for older Obsidian builds (< 1.11.0) */
 /* Scoped to only this plugin's settings container to avoid affecting other plugins */
-/* Base styling for setting-group-heading - drop default border */
-.alias-file-name-history-settings-compat .setting-group-heading {
-	margin-top: 1.5rem;
-}
-
-.alias-file-name-history-settings-compat .setting-group-heading:first-child {
-	margin-top: 0;
-}
-
 .alias-file-name-history-settings-compat .setting-group-heading h3 {
 	margin: 0 0 0.75rem;
 	padding-bottom: 0.5rem;
+	padding-top: 0.5rem;
 	font-size: 1rem;
 	font-weight: 600;
 	border-bottom: none !important;
-}
-
-/* Only reintroduce border-bottom if heading is NOT immediately followed by a setting-item */
-/* This prevents double divider lines in older Obsidian builds where the first .setting-item */
-/* already has a border-top, creating a double line with the heading's border-bottom */
-.alias-file-name-history-settings-compat .setting-group-heading:not(:has(+ .setting-item)) h3 {
-	border-bottom: 1px solid var(--background-modifier-border) !important;
 }
 
