@@ -1,12 +1,7 @@
-/* Hide mobile new tab icon when the plugin setting is enabled */
-body.disable-tabs-hide-mobile-icon .mobile-navbar-action-tabs {
-  display: none;
-}
-
 /* Group settings compatibility styling for older Obsidian builds (< 1.11.0) */
 /* Scoped to only this plugin's settings container to avoid affecting other plugins */
 /* Base styling for setting-group-heading - drop default border */
-.disable-tabs-settings-compat .setting-group-heading h3 {
+.alias-file-name-history-settings-compat .setting-group-heading h3 {
 	margin: 1.5rem 0 0.75rem;
 	padding-bottom: 0.5rem;
 	font-size: 1rem;
@@ -14,14 +9,14 @@ body.disable-tabs-hide-mobile-icon .mobile-navbar-action-tabs {
 	border-bottom: none !important;
 }
 
-.disable-tabs-settings-compat .setting-group-heading:first-child h3 {
+.alias-file-name-history-settings-compat .setting-group-heading:first-child h3 {
 	margin-top: 0;
 }
 
 /* Only reintroduce border-bottom if heading is NOT immediately followed by a setting-item */
 /* This prevents double divider lines in older Obsidian builds where the first .setting-item */
 /* already has a border-top, creating a double line with the heading's border-bottom */
-.disable-tabs-settings-compat .setting-group-heading:not(:has(+ .setting-item)) h3 {
+.alias-file-name-history-settings-compat .setting-group-heading:not(:has(+ .setting-item)) h3 {
 	border-bottom: 1px solid var(--background-modifier-border) !important;
 }
 

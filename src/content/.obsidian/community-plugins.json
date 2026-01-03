@@ -4,7 +4,6 @@
   "tag-wrangler",
   "statusbar-organizer",
   "settings-search",
-  "alias-file-name-history",
   "astro-composer",
   "astro-modular-settings",
   "bases-cms",
@@ -16,5 +15,7 @@
   "oxygen-settings",
   "iconic",
   "image-manager",
-  "home-base"
+  "home-base",
+  "disable-tabs",
+  "alias-file-name-history"
 ]
