@@ -64,7 +64,7 @@
       "icon": "lucide-chevron-down",
       "name": "Toggle editing toolbar",
       "displayName": "Editing Toolbar: Hide/Show ",
-      "mode": "any",
+      "mode": "desktop",
       "toggleIcon": "lucide-chevron-up",
       "showOnFileTypes": "md"
     }
@@ -110,6 +110,14 @@
     {
       "id": "plugin-obsidian-git-obsidian-git-statusbar-idle-obsidian-git-statusbar-status;1",
       "name": "Git is ready",
+      "type": "existing",
+      "hidden": false,
+      "mdOnly": false,
+      "sticky": "right"
+    },
+    {
+      "id": "plugin-obsidian-git-obsidian-git-statusbar-idle-obsidian-git-statusbar-status-obsidian-git-statusbar-pull-obsidian-git-statusbar-message;1",
+      "name": "Last Commit: 24 minutes ago",
       "type": "existing",
       "hidden": false,
       "mdOnly": false,

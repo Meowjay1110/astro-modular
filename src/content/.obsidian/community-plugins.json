@@ -1,11 +1,8 @@
 [
-  "zenmode",
-  "ui-tweaker",
   "tag-wrangler",
   "settings-search",
   "bases-cms",
   "editing-toolbar",
-  "explorer-focus",
   "seo",
   "property-over-file-name",
   "iconic",
@@ -15,5 +12,8 @@
   "oxygen-settings",
   "home-base",
   "obsidian-git",
-  "astro-modular-settings"
+  "astro-modular-settings",
+  "zenmode",
+  "explorer-focus",
+  "ui-tweaker"
 ]
