@@ -40,7 +40,7 @@
   "ribbonMenuButton": false,
   "swapMobileNewTabIcon": false,
   "hideMobileTitle": false,
-  "hideMobileSyncIcon": true,
+  "hideMobileSyncIcon": false,
   "navigateButtonPosition": "1",
   "navigationButtonPosition": "2",
   "quickSwitcherPosition": "3",
@@ -50,12 +50,12 @@
   "vaultSwitcherBackgroundTransparency": 1,
   "helpButtonReplacement": {
     "enabled": false,
-    "commandId": "astro-composer:edit-astro-config",
+    "commandId": "",
     "iconId": "wrench"
   },
   "syncButtonReplacement": {
     "enabled": false,
-    "commandId": "open-settings",
+    "commandId": "",
     "iconId": "wrench"
   },
   "tabBarCommands": [
@@ -64,7 +64,7 @@
       "icon": "lucide-chevron-down",
       "name": "Toggle editing toolbar",
       "displayName": "Editing Toolbar: Hide/Show ",
-      "mode": "desktop",
+      "mode": "any",
       "toggleIcon": "lucide-chevron-up",
       "showOnFileTypes": "md"
     }
@@ -72,22 +72,22 @@
   "statusBarItems": [
     {
       "id": "plugin-editor-status;1",
-      "name": "Live Preview",
+      "name": "plugin-editor-status",
       "type": "existing",
       "hidden": false,
       "mdOnly": false,
       "sticky": "left"
     },
     {
-      "id": "plugin-word-count;1",
-      "name": "0 words0 characters",
+      "id": "plugin-backlink;1",
+      "name": "0 backlinks",
       "type": "existing",
       "hidden": false,
       "mdOnly": false
     },
     {
-      "id": "plugin-backlink;1",
-      "name": "0 backlinks",
+      "id": "plugin-word-count;1",
+      "name": "0 words0 characters",
       "type": "existing",
       "hidden": false,
       "mdOnly": false
@@ -100,24 +100,16 @@
       "mdOnly": false
     },
     {
+      "id": "plugin-obsidian-git;2",
+      "name": "master",
+      "type": "existing",
+      "hidden": false,
+      "mdOnly": false,
+      "sticky": "right"
+    },
+    {
       "id": "plugin-obsidian-git;1",
       "name": "plugin-obsidian-git",
-      "type": "existing",
-      "hidden": false,
-      "mdOnly": false,
-      "sticky": "right"
-    },
-    {
-      "id": "plugin-obsidian-git-obsidian-git-statusbar-idle-obsidian-git-statusbar-status;1",
-      "name": "Git is ready",
-      "type": "existing",
-      "hidden": false,
-      "mdOnly": false,
-      "sticky": "right"
-    },
-    {
-      "id": "plugin-obsidian-git-obsidian-git-statusbar-idle-obsidian-git-statusbar-status-obsidian-git-statusbar-pull-obsidian-git-statusbar-message;1",
-      "name": "Last Commit: 24 minutes ago",
       "type": "existing",
       "hidden": false,
       "mdOnly": false,
@@ -132,7 +124,7 @@
       "hidden": false,
       "mdOnly": false,
       "commandId": "obsidian-git:push",
-      "mode": "desktop",
+      "mode": "any",
       "sticky": "right"
     }
   ],
