@@ -106,25 +106,28 @@
       "mdOnly": false
     },
     {
-      "id": "plugin-obsidian-git;1",
-      "name": "plugin-obsidian-git",
-      "type": "existing",
-      "hidden": false,
-      "mdOnly": false
-    },
-    {
       "id": "plugin-obsidian-git-branch;1",
       "name": "master",
       "type": "existing",
       "hidden": false,
-      "mdOnly": false
+      "mdOnly": false,
+      "sticky": "right"
     },
     {
       "id": "plugin-obsidian-git-status;1",
       "name": "Last Commit: 2 days ago",
       "type": "existing",
       "hidden": false,
-      "mdOnly": false
+      "mdOnly": false,
+      "sticky": "right"
+    },
+    {
+      "id": "plugin-obsidian-git;1",
+      "name": "plugin-obsidian-git",
+      "type": "existing",
+      "hidden": false,
+      "mdOnly": false,
+      "sticky": "right"
     },
     {
       "id": "custom-obsidian-git:push",
