@@ -249,13 +249,51 @@ const shouldShowTOC = filteredHeadings.length > 1;
     }
   }
   
-  /* Prevent horizontal overflow */
+  /* Prevent horizontal overflow and enable vertical scrolling when needed */
   .toc-list {
     overflow-x: hidden;
-    overflow-y: visible;
+    overflow-y: auto;
     width: 100%;
-    padding-right: 0;
+    padding-right: 0.5rem; /* Space for scrollbar */
     box-sizing: border-box;
+    max-height: calc(100vh - 30rem); /* Dynamic max height based on viewport */
+    
+    /* Custom scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--color-primary-300)) transparent;
+  }
+  
+  /* Webkit scrollbar styling for Chrome/Safari/Edge */
+  .toc-list::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .toc-list::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 3px;
+  }
+  
+  .toc-list::-webkit-scrollbar-thumb {
+    background: rgb(var(--color-primary-300));
+    border-radius: 3px;
+    transition: background 0.2s ease;
+  }
+  
+  .toc-list::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--color-primary-400));
+  }
+  
+  /* Dark mode scrollbar */
+  .dark .toc-list {
+    scrollbar-color: rgb(var(--color-primary-600)) transparent;
+  }
+  
+  .dark .toc-list::-webkit-scrollbar-thumb {
+    background: rgb(var(--color-primary-600));
+  }
+  
+  .dark .toc-list::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--color-primary-500));
   }
   
   .toc-item {
