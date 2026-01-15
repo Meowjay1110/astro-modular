@@ -49,6 +49,44 @@ const shouldShowTOC = filteredHeadings.length > 1;
 )}
 
 <script>
+  // Constants for TOC height calculation
+  const BOTTOM_SPACING = 96; // 6rem = 96px - fixed spacing from bottom of viewport
+  const MIN_TOC_HEIGHT = 200; // Minimum height for TOC list to be useful
+  
+  // Global function to calculate and set TOC max height
+  function updateTOCHeight() {
+    const tocList = document.querySelector('.toc-list') as HTMLElement;
+    const tocContainer = document.querySelector('.toc-container') as HTMLElement;
+    
+    if (!tocList || !tocContainer) return;
+    
+    // Get the TOC container's position relative to viewport
+    const rect = tocContainer.getBoundingClientRect();
+    const tocTop = rect.top;
+    
+    // Calculate available space: viewport height - TOC top position - bottom spacing
+    const availableHeight = window.innerHeight - tocTop - BOTTOM_SPACING;
+    
+    // Ensure minimum height
+    const maxHeight = Math.max(availableHeight, MIN_TOC_HEIGHT);
+    
+    // Apply the calculated max-height
+    tocList.style.maxHeight = `${maxHeight}px`;
+  }
+  
+  // Debounce function for performance
+  function debounce(func: Function, wait: number) {
+    let timeout: ReturnType<typeof setTimeout>;
+    return function executedFunction(...args: any[]) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+  
   // Global function to initialize table of contents
   function initializeTableOfContents() {
     const tocLinks = document.querySelectorAll('.toc-link');
@@ -58,6 +96,9 @@ const shouldShowTOC = filteredHeadings.length > 1;
     const tocChevron = document.querySelector('.toc-chevron') as HTMLElement;
     
     if (!tocLinks.length || !headings.length) return;
+    
+    // Calculate initial TOC height
+    updateTOCHeight();
     
     // Remove existing event listeners to prevent duplicates
     if (tocToggle) {
@@ -133,10 +174,38 @@ const shouldShowTOC = filteredHeadings.length > 1;
       tocNav.offsetHeight; // Trigger reflow
       tocNav.style.display = '';
     }
+    
+    // Set up resize observer for height recalculation
+    const debouncedUpdateHeight = debounce(updateTOCHeight, 150);
+    window.addEventListener('resize', debouncedUpdateHeight);
+    window.addEventListener('scroll', debouncedUpdateHeight);
+    
+    // Also update height when Local Graph is initialized (for PostLayout)
+    // This handles cases where Graph appears/disappears dynamically
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'childList' || mutation.type === 'attributes') {
+          // Delay to let layout settle
+          setTimeout(updateTOCHeight, 100);
+        }
+      });
+    });
+    
+    // Observe the sidebar for changes (Graph appearing/disappearing)
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) {
+      observer.observe(sidebar, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['style']
+      });
+    }
   }
 
-  // Make function globally available
+  // Make functions globally available
   (window as any).initializeTableOfContents = initializeTableOfContents;
+  (window as any).updateTOCHeight = updateTOCHeight;
 
   // Initialize on DOMContentLoaded
   document.addEventListener('DOMContentLoaded', initializeTableOfContents);
@@ -256,7 +325,8 @@ const shouldShowTOC = filteredHeadings.length > 1;
     width: 100%;
     padding-right: 0.5rem; /* Space for scrollbar */
     box-sizing: border-box;
-    max-height: calc(100vh - 30rem); /* Dynamic max height based on viewport */
+    /* max-height is dynamically set by JavaScript based on available space */
+    /* This ensures consistent bottom spacing regardless of Graph presence */
     
     /* Custom scrollbar styling */
     scrollbar-width: thin;
